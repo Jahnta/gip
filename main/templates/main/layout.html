@@ -12,9 +12,8 @@
 <body>
     <div class="topnav">
         <a href="{% url 'home' %}">На главную</a>
-        <a href="{% url 'chart' %}">График инспекций</a>
         <a href="{% url 'cards' %}">Карточки</a>
-        <a href="{% url 'news' %}">Новости</a>
+        <a href="{% url 'chart' %}">График инспекций</a>
     </div>
     <main>
         {% block content %}
