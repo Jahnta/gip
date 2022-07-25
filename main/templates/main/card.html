@@ -1,0 +1,49 @@
+
+{% block card %}
+
+<card onclick="location.href='{% url 'detail' event.id %}';" style="cursor: pointer">
+    <cardblock style="margin-top: 15px">
+        <object>{{ event.unit.station }}</object>
+        <unit>{{ event.unit.name }}</unit>
+    </cardblock>
+    <cardblock>
+        <event_short_name>{{ event.short_name }}</event_short_name>
+        <event_full_name>{{ event.full_name }}</event_full_name>
+    </cardblock>
+    <cardblock>
+        <div class="row">
+            <div class="column" style="font-weight: bold">Начало:</div>
+            <div class="column" style="font-weight: bold">Окончание:</div>
+            <div class="column" style="font-weight: bold">Длительность:</div>
+        </div>
+        <div class="row">
+            <div class="column">{{event.start.date}}</div>
+            <div class="column">{{event.end.date}}</div>
+            <div class="column">{{event.duration}} кал. дней</div>
+        </div>
+    </cardblock>
+    <cardblock style="display: none">
+        <div class="column" style="width: 20%">
+            <div style="font-weight: bold">Договор:</div>
+            <div style="font-weight: bold">Отчет:</div>
+        </div>
+        <div class="column" style="width: 70%">
+            <div>{{event.contract}}</div>
+            <div>{{event.report}}</div>
+        </div>
+        </div>
+    </cardblock>
+    <button class="accordion" style="background-color:
+    {% if event.duration <= 14 %}
+        #268e00
+    {% elif event.duration <= 30 %}
+        #a6a600
+    {% else %}
+        #1142AA
+    {% endif %}"
+    >Дополнительно</button>
+</card>
+
+
+
+{% endblock %}

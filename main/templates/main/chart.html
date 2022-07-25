@@ -1,0 +1,33 @@
+{% extends 'main/layout.html' %}
+
+{% block title %}
+    График инспекций
+{% endblock %}
+
+{% block content %}
+    <h2 style="margin: 15px;">Тут должен быть график инспекций, но его пока нет</h2>
+
+
+    <div class="chart-wrapper">
+      <ul class="chart-values">
+        <li>Янв</li>
+        <li>Фев</li>
+        <li>Март</li>
+        <li>Апр</li>
+        <li>Май</li>
+        <li>Июнь</li>
+        <li>Июль</li>
+        <li>Авг</li>
+        <li>Сент</li>
+        <li>Окт</li>
+        <li>Ноя</li>
+        <li>Дек</li>
+
+      </ul>
+      <ul class="chart-bars">
+        <li data-duration="tue-wed" data-color="#b03532">Task</li>
+        <li data-duration="wed-sat" data-color="#33a8a5">Task</li>
+      </ul>
+    </div>
+
+{% endblock %}
