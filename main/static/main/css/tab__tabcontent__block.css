@@ -1,0 +1,8 @@
+.block {
+    margin: 15px;
+    padding: 15px;
+    border: 1px solid grey;
+    min-width: 400px;
+    width: calc(100%/4 - 30px);
+    float: left;
+}
