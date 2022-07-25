@@ -1,4 +1,9 @@
 {% extends 'main/layout.html' %}
+{% load static %}
+
+{% block head%}
+    <link rel="stylesheet" href="{% static 'main/css/tab.css' %}">
+{% endblock %}
 
 {% block title %}
     {{ event }}
@@ -6,26 +11,53 @@
 
 {% block content %}
 
-    {% include 'main/card.html'%}
+<div class="tab">
+    <button class="tablinks" onclick="openTab(event, 'tab1')" id="defaultOpen">Общая информация</button>
+    <button class="tablinks" onclick="openTab(event, 'tab2')">Объем работ</button>
+    <button class="tablinks" onclick="openTab(event, 'tab3')">Субподрядчики</button>
+    <button class="tablinks" onclick="openTab(event, 'tab4')">Запасные части</button>
+    <button class="tablinks" onclick="openTab(event, 'tab5')">Персонал</button>
+</div>
 
-    <script>
-    var acc = document.getElementsByClassName("accordion");
-    var i;
+<div id="tab1" class="tabcontent">
+    <div style="margin:15px; padding: 15px; border: 1px solid grey">
+        <h3>Общая информация</h3>
+        <p>{{ event.full_name }}</p>
+        <p>{{ event.unit.name }}</p>
+        <p>{{ event.unit.station.name }}</p>
+        <p>{{ event.start.date }}</p>
+        <p>{{ event.end.date }}</p>
+        <p>{{ event.duration }}</p>
+        <p>{{ event.contract }}</p>
+        <p>{{ event.report }}</p>
+    </div>
+</div>
 
-    for (i = 0; i < acc.length; i++) {
-        acc[i].addEventListener("click", function() {
-            this.classList.toggle("active");
-            var panel = this.previousElementSibling;
-            if (panel.style.display === "block") {
-                panel.style.display = "none";
-                this.innerHTML = "Дополнительно";
-            } else {
-                panel.style.display = "block";
-                this.innerHTML = "Свернуть";
-            }
-            event.stopPropagation();
-        });
-    }
-    </script>
+<div id="tab2" class="tabcontent">
+    <div style="margin:15px; padding: 15px; border: 1px solid grey">
+        <h3>Объем работ</h3>
+    </div>
+</div>
+
+<div id="tab3" class="tabcontent">
+    <div style="margin:15px; padding: 15px; border: 1px solid grey">
+        <h3>Субподрядчики</h3>
+    </div>
+</div>
+
+<div id="tab4" class="tabcontent">
+    <div style="margin:15px; padding: 15px; border: 1px solid grey">
+        <h3>Запасные части</h3>
+    </div>
+</div>
+
+<div id="tab5" class="tabcontent">
+    <div style="margin:15px; padding: 15px; border: 1px solid grey">
+        <h3>Персонал</h3>
+    </div>
+</div>
+
+<script></script>
+<script src="{% static 'main/js/openTab.js' %}"></script>
 
 {% endblock %}
