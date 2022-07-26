@@ -24,23 +24,7 @@
     <button class="tablinks" onclick="openTab(event, 'tab6')">Ремонтная документация</button>
 </div>
 
-<div id="tab1" class="tabcontent">
-    <div class="block" id="time">
-        <p><span style="font-weight: bold;">Начало: </span>{{ event.start }}</p>
-        <p><span style="font-weight: bold;">Окончание: </span>{{ event.end }}</p>
-        <p><span style="font-weight: bold;">Длительность: </span>{{ event.duration }}</p>
-    </div>
-    <div class="block" id="contract">
-        <p><span style="font-weight: bold;">Номер договора: </span>{{ event.contract.number }}</p>
-        <p><span style="font-weight: bold;">От: </span>{{ event.contract.reg_date }}</p>
-        <p><span style="font-weight: bold;">Контрагент: </span>{{ event.contract.counterparty }}</p>
-        <p><span style="font-weight: bold;">Стоимость договора: </span>{{ event.contract.value_rub }}</p>
-        <p><span style="font-weight: bold;">Файл договора: </span><a href="">{{ event.contract.file }}</a></p>
-    </div>
-    <div class="block" id="report">
-        <p><span style="font-weight: bold;">Отчет: </span>{{ event.report }}</p>
-    </div>
-</div>
+{% include 'main/general.html'%}
 
 <div id="tab2" class="tabcontent">
     <div class="block"><h3>Объем работ 1</h3></div>

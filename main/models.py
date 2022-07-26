@@ -11,7 +11,7 @@ class Contract(models.Model):
     value_rub = models.DecimalField('Цена договора в валюте', decimal_places=2, max_digits=15)
     value_cur = models.DecimalField('Цена договора в рублях', decimal_places=2, max_digits=15)
     counterparty = models.CharField('Контрагент', max_length=500)
-    file = models.FileField('Файл договора', upload_to='uploads/')
+    file = models.FileField('Файл договора', null=True, upload_to='uploads/')
 
     def __str__(self):
         return self.number
@@ -27,6 +27,7 @@ class Unit(models.Model):
     station = models.ForeignKey(Station, on_delete=models.CASCADE)
     name = models.CharField('Наименование установки', max_length=100)
     short_name = models.CharField('Короткое наименование установки', max_length=10, default='-')
+    unit_type = models.CharField('Тип установки', max_length=10, default='-')
 
     def __str__(self):
         return self.short_name + ' ' + self.station.short_name

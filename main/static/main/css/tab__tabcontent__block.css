@@ -1,8 +1,7 @@
 .block {
     margin: 15px;
     padding: 15px;
-    border: 1px solid grey;
-    min-width: 400px;
-    width: calc(100%/4 - 30px);
+    background-color: #fff;
     float: left;
+    box-shadow: 0px 0px 2px #888888;
 }
