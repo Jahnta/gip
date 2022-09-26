@@ -1,0 +1,72 @@
+
+{% block content %}
+
+<div id="general" class="tabcontent">
+    <div class="container">
+
+        <div class="progress" style="height:40px;">
+            <div class="progress-bar"
+                 style="width: {{ 75 }}%; font-size: 16px"
+                 role="progressbar"
+                 aria-valuemin="0"
+                 aria-valuemax="100">
+                Прогресс выполнения: {{ 75 }}% (пример)
+            </div>
+        </div>
+        <div class="dashboard" style="grid-template-columns: 1fr 1fr 1fr;">
+                <div class="block" style="font-size: 20px; ">
+                    <span style="">Начало:</span>
+                    <span style="font-size: 20px; font-weight: 500; float:right">{{ event.start }}</span><br>
+                </div>
+                <div class="block" style="font-size: 20px; ">
+                    <span style="">Окончание:</span>
+                    <span style="font-size: 20px; font-weight: 500; float:right">{{ event.end }}</span><br>
+                </div>
+                <div class="block" style="font-size: 20px; ">
+                    <span style="">Длительность:</span>
+                    <span style="font-size: 20px; font-weight: 500; float:right">{{ event.duration }} кал. дней</span><br>
+                </div>
+                <div class="block">
+                    <p><span style="font-weight: bold;">ДОГОВОР</span></p>
+                    <table style="width:100%">
+                        <colgroup>
+                            <col span="1" style="width: 40%;">
+                            <col span="1" style="width: 60%;">
+                        </colgroup>
+                        <tbody style="vertical-align: top">
+                            <tr>
+                                <td><span style="font-weight: bold;">Номер договора: </span></td>
+                                <td>{{ event.contract.number }}</td>
+                            </tr>
+                            <tr>
+                                <td><span style="font-weight: bold;">От: </span></td>
+                                <td>{{ event.contract.reg_date }}</td>
+                            </tr>
+                            <tr>
+                                <td><span style="font-weight: bold;">Контрагент: </span></td>
+                                <td>{{ event.contract.counterparty }}</td>
+                            </tr>
+                            <tr>
+                                <td><span style="font-weight: bold;">Стоимость договора: </span></td>
+                                <td>{{ event.contract.value_rub }}</td>
+                            </tr>
+                            <tr>
+                                <td><span style="font-weight: bold;">Предмет договора: </span></td>
+                                <td>{{ event.contract.subject }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="block">
+                    <p><span style="font-weight: bold;">ОБНОВЛЕНИЯ</span></p>
+                    <p><span>2022-07-27 17:00 Тут должно быть обновление.</span></p>
+                </div>
+                <div class="block">
+                    <p><span style="font-weight: bold;">ПРОЧЕЕ</span></p>
+                    <p><span>Все права защищены (нет). Кнопки "Подробнее" пока ничего не делают. Обновления выдуманы. В других вкладках почти ничего нет.</span></p>
+                </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

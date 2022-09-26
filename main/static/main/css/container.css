@@ -1,0 +1,103 @@
+.chart-container {
+    min-width: calc(100% - 30px);
+    margin: 15px;
+    padding: 15px;
+    background-color: white;
+    position: relative;
+}
+
+.chart {
+    display: grid;
+    border: 1px solid #000;
+    position: relative;
+    overflow: hidden;
+}
+
+.chart-row {
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    background-color: white;
+    border-bottom: 0px solid #000;
+}
+
+.chart-period {
+    color:  #000;
+    background-color:  #eee;
+    border-bottom: 1px solid #000;
+    grid-template-columns: 80px 80px repeat(12, 1fr);
+    position: sticky;
+}
+
+
+.chart-lines {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-color: transparent;
+    grid-template-columns: 80px 80px repeat(12, 1fr);
+}
+
+.chart-period > span {
+    text-align: center;
+    font-size: 13px;
+    font-weight: bold;
+    padding: 15px 0;
+ }
+
+.chart-lines > span {
+    display: block;
+    border-right: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+.chart-row-station {
+    background-color: #fff;
+    border-right: 0px solid #000;
+    border-bottom: 1px solid #000;
+    font-size: 15px;
+    font-weight: bold;
+    text-align: center;
+    padding: 5px 0px;
+}
+
+.chart-row-units {
+    display: grid;
+    border-bottom: 1px solid black;
+    min-height: 50px;
+    padding: 0px;
+    font-size: 15px;
+    font-weight: bold;
+    text-align: left;
+    grid-template-columns: 80px repeat(12, 1fr);
+    padding: 5px 0px;
+}
+
+.chart-row-unit {
+    border-right: 0px solid #000;
+    font-size: 15px;
+    font-weight: bold;
+    text-align: center;
+}
+
+li {
+    list-style: none;
+    font-weight: 350;
+    text-align: left;
+    font-size: 11px;
+    min-height: 15px;
+    background-color: #708090;
+    padding: 5px 10px;
+    color: #fff;
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+    border-radius: 10px;
+    transition: box-shadow 0.3s ease;
+    transition: transform 0.3s ease;
+    box-shadow: 2px 2px 5px #888888;
+    margin: 2px 3px;
+}
+
+li:hover {
+    box-shadow: 4px 4px 10px #888888;
+    transform: translate(-5px, -5px);
+}

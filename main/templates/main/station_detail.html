@@ -1,0 +1,86 @@
+{% extends 'main/new_layout.html' %}
+{% load static %}
+
+{% block head%}
+    <link rel="stylesheet" href="{% static 'main/css/tab.css' %}">
+    <link rel="stylesheet" href="{% static 'main/css/tab__tabcontent__block.css' %}">
+{% endblock %}
+
+{% block title %}
+    {{ station }}
+{% endblock %}
+
+{% block content %}
+
+<div class="topline">
+    <div class="topline-item" style="margin-left: 0">
+        <a href="{% url 'stations' %}">Все станции</a>
+    </div> /
+    <div class="topline-item active">
+        <a href="{% url 'station_detail' station.id %}">{{ station.short_name }}</a>
+    </div>
+</div>
+
+
+<div style="padding: 15px 20px;">
+    <a style="font-size: 30px; font-weight: 500;">
+        {{ station.name }}
+    </a>
+    <br>
+    <a style="color: grey">{{ station.company }}</a>
+</div>
+
+<div class="tab" style="padding-left: 0px;">
+    <button class="tablinks" onclick="openTab(event, 'general')" id="defaultOpen">Общая информация</button>
+    <button class="tablinks" onclick="openTab(event, 'units')" id="defaultOpen">Оборудование</button>
+</div>
+
+<div id="general" class="tabcontent" style="padding: 0 0;">
+    <div class="container" style="">
+    <div class="dashboard" style="grid-template-columns: 1fr 1fr">
+        <div class="col">
+            <div class="block">
+                <h5>Информация о станции</h5>
+                Что-то: <br>
+                Что-то еще: <br>
+                Что-то третье: <br>
+                Важные данные: <br>
+            </div>
+            <div class="block">
+                <h5>Еще информация о станции</h5>
+                Что-то: <br>
+                Что-то: <br>
+                Что-то: <br>
+            </div>
+        </div>
+        <div class="col">
+            <div class="block">
+                <h5>Установки:</h5>
+                {% for unit in unit_list %}
+                    <a href="{% url 'unit_detail' unit.id %}">{{ unit }}</a><br>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+<div id="units" class="tabcontent" style="padding: 0 0;">
+    <div class="container" style="">
+    <div class="dashboard" style="grid-template-columns: 1fr 1fr">
+    <div class="col">
+        <div class="block">
+            <h5>Установки:</h5>
+            {% for unit in unit_list %}
+                <a href="{% url 'unit_detail' unit.id %}">{{ unit }}</a><br>
+            {% endfor %}
+        </div>
+    </div>
+    </div>
+    </div>
+</div>
+
+<script></script>
+<script src="{% static 'main/js/openTab.js' %}"></script>
+
+{% endblock %}

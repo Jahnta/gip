@@ -1,7 +1,56 @@
+.topline {
+    padding: 15px 0 15px 15px;
+    border-bottom: 1px solid lightgrey;
+}
+
+.topline-item {
+    padding: 2px 7px;
+    display: inline-block;
+}
+
+.topline-item a {
+    color: black;
+    font-weight: 500;
+    text-decoration: none;
+}
+
+.topline-item:hover {
+    color: #007AC2;
+    background-color: #E7F6FF;
+}
+
+.topline-item.active {
+    color: #007AC2;
+    background-color: #E7F6FF;
+}
+
+.container {
+    min-width: 100%;
+    display: grid;
+    position: relative;
+    padding: 30px;
+    font-size: 14px;
+    column-gap: 30px;
+    row-gap: 30px;
+}
+
+.dashboard {
+    display: grid;
+    column-gap: 30px;
+    row-gap: 30px;
+    padding: 0;
+}
+
+.dashboard .col {
+    display: grid;
+    column-gap: 30px;
+    row-gap: 30px;
+}
+
 .block {
-    margin: 15px;
+    overflow: auto;
     padding: 15px;
-    background-color: #fff;
     float: left;
-    box-shadow: 0px 0px 2px #888888;
+    border-radius: 5px;
+    border: 1px solid lightgrey;
 }

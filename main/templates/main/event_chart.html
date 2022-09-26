@@ -1,0 +1,120 @@
+{% extends 'main/new_layout.html' %}
+{% load static %}
+
+{% block title %}
+    График инспекций
+{% endblock %}
+
+{% block nav-chart %}
+<a href="{% url 'chart' %}" class="active"><i class="fa-solid fa-chart-bar"></i>&nbsp&nbspГрафик инспекций</a>
+{% endblock %}
+
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'main/css/container.css' %}">
+    <link rel="stylesheet" href="{% static 'main/css/tab.css' %}">
+    <link rel="stylesheet" href="{% static 'main/css/tab__tabcontent__block.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<div class="tab" style="text-align: center; font-size: 20px">
+    {% for year in years %}
+    <button class="tablinks" onclick="openTab(event, '{{ year.year }}')"
+            {% if year.year == 2022 %}
+            id="defaultOpen"
+            {%endif %}
+    >
+        {{ year.year }}
+    </button>
+    {% endfor %}
+</div>
+
+
+<a href="{% url 'create_card' %}">
+    <button class="btn btn-primary" style="position: absolute; top: 12px; right:30px">
+        <i class="fa-solid fa-plus"></i>&nbsp&nbsp&nbsp&nbsp  Добавить инспекцию
+    </button>
+</a>
+
+{% for year in years %}
+
+<div id="{{ year.year }}" class="tabcontent">
+
+
+<div class="chart-container">
+    <div class="chart">
+        <div class="chart-row chart-period" id="navbar">
+            <span>Объект</span>
+            <span>Установка</span>
+            <span>Январь</span>
+            <span>Февраль</span>
+            <span>Март</span>
+            <span>Апрель</span>
+            <span>Май</span>
+            <span>Июнь</span>
+            <span>Июль</span>
+            <span>Август</span>
+            <span>Сентябрь</span>
+            <span>Октябрь</span>
+            <span>Ноябрь</span>
+            <span>Декабрь</span>
+        </div>
+        <div class="chart-row chart-lines">
+            <span></span><span></span><span></span><span></span>
+            <span></span><span></span><span></span>
+            <span></span><span></span><span style=""></span>
+            <span></span><span></span><span></span>
+        </div>
+        {% for station in year.stations %}
+        <div class="chart-row">
+            <div class="chart-row-station">
+                {{ station.station.short_name }}
+            </div>
+            <div>
+                {% for unit in station.units %}
+                <div class="chart-row-units">
+                    <div class="chart-row-unit">{{ unit.unit.short_name }}<br>
+                        <span style="font-size: 11px; font-weight: 400;">{{ unit.unit.unit_type.name }}</span></div>
+                    {% for event in unit.events %}
+                        <li onclick="location.href='{% url 'event_detail' event.id %}';"  style="
+
+                        {% if event.start.year == year.year %}
+                            grid-column-start: calc({{event.start.month}} + 1);
+                        {% else %}
+                            grid-column-start: calc({{ 1 }} + 1) ;
+                        {% endif %}
+
+                        {% if event.end.year == year.year %}
+                            grid-column-end: calc({{event.end.month}} + 2);
+                        {% else %}
+                            grid-column-end: calc({{ 12 }} + 2) ;
+                        {% endif %}
+
+                        background-color:
+                        {% if event.duration <= 14 %}
+                            #268e00
+                        {% elif event.duration <= 30 %}
+                            #a6a600
+                        {% else %}
+                            #1142AA
+                        {% endif %}">
+                            <span style="font-weight: bolder; font-size: 14px">{{ event.short_name }} {{unit.unit.short_name}}</span><br>
+                            с {{ event.start|date:'d.m' }} по {{ event.end|date:'d.m' }}
+                        </li>
+                    {% endfor %}
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+</div>
+
+{% endfor %}
+
+<script src="{% static 'main/js/openTab.js' %}"></script>
+
+{% endblock %}

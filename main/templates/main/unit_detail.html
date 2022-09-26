@@ -1,0 +1,93 @@
+{% extends 'main/new_layout.html' %}
+{% load static %}
+
+{% block head%}
+    <link rel="stylesheet" href="{% static 'main/css/tab.css' %}">
+    <link rel="stylesheet" href="{% static 'main/css/tab__tabcontent__block.css' %}">
+{% endblock %}
+
+{% block title %}
+    {{ unit }}
+{% endblock %}
+
+{% block content %}
+
+<div class="topline">
+    <div class="topline-item" style="margin-left: 0">
+        <a href="{% url 'stations' %}">Все станции</a>
+    </div> /
+    <div class="topline-item">
+        <a href="{% url 'station_detail' unit.station.id %}">{{ unit.station.short_name }}</a>
+    </div> /
+    <div class="topline-item active">
+        <a href="{% url 'unit_detail' unit.id %}">
+            {{ unit.short_name }}
+        </a>
+    </div>
+</div>
+
+<div style="padding: 15px 20px;">
+    <a style="font-size: 30px; font-weight: 500;">
+        {{ unit.name }}
+    </a>
+    <br>
+    <a style="color: grey">{{ unit.station }}</a>
+</div>
+
+<div class="tab" style="padding-left: 0;">
+    <button class="tablinks" onclick="openTab(event, 'general')" id="defaultOpen">Общая информация</button>
+    <button class="tablinks" onclick="openTab(event, 'events')" id="defaultOpen">События</button>
+</div>
+
+<div id="general" class="tabcontent" style="padding: 0 0;">
+    <div class="container" style="">
+    <div class="dashboard" style="grid-template-columns: 1fr 1fr">
+        <div class="col">
+            <div class="block">
+                <h5>Информация об установке:</h5>
+                Тип машины: {{ unit.unit_type.machine_type }}<br>
+                Тип установки: {{ unit.unit_type.name }}<br>
+                Версия: <br>
+                Станционный номер: {{ unit.station_number }}<br>
+                Серийный номер: <br>
+            </div>
+            <div class="block">
+                <h5>Дополнительно:</h5>
+                Введено в эксплуатацию: <br>
+                Мощность: <br>
+                Температура на выхлопе: <br>
+                Вид топлива: <br>
+            </div>
+        </div>
+        <div class="col">
+            <div class="block">
+                <h5>События:</h5>
+                {% for event in event_list %}
+                    <a href="{% url 'event_detail' event.id %}">{{ event }} {{ event.start.year}}</a><br>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+
+<div id="events" class="tabcontent" style="padding: 0 0;">
+    <div class="container" style="">
+    <div class="dashboard" style="grid-template-columns: 1fr 1fr">
+    <div class="col">
+        <div class="block">
+            <h5>События:</h5>
+            {% for event in event_list %}
+                <a href="{% url 'event_detail' event.id %}">{{ event }} {{ event.start.year }}</a><br>
+            {% endfor %}
+        </div>
+    </div>
+    </div>
+    </div>
+</div>
+
+<script></script>
+<script src="{% static 'main/js/openTab.js' %}"></script>
+
+{% endblock %}
