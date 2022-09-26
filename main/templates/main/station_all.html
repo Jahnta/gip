@@ -1,0 +1,49 @@
+{% extends 'main/new_layout.html' %}
+{% load static %}
+
+{% block title %}
+    Станции
+{% endblock %}
+
+{% block nav-stations %}
+<a href="{% url 'stations' %}" class="active"><i class="fa-solid fa-layer-group"></i>&nbsp&nbspСтанции</a>
+{% endblock %}
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'main/css/tab.css' %}">
+    <link rel="stylesheet" href="{% static 'main/css/tab__tabcontent__block.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<div class="topline">
+    <div class="topline-item active" style="margin-left: 0">
+        <a href="{% url 'stations' %}">Все станции</a>
+    </div>
+</div>
+
+
+<div class="container" style="margin-top: 15px;">
+    <div>
+        {% for company in companies %}
+            <div style="">
+                <h3 style="margin-bottom: 15px;">{{ company.name }}</h3>
+                {% for station in company.station_list %}
+                <div class="card" style="width: 20rem; display: inline-block; margin-right: 15px; margin-bottom: 15px">
+                    <img src="{{ station.image.url }}" class="card-img-top" alt="..." height="200">
+                    <div class="card-body">
+                        <h6 class="card-title">{{ station }}</h6>
+                        <p class="card-text" style="height: 50px;">
+                            {{ station.address }}<br>
+                        </p>
+                    </div>
+                    <div class="card-body text-end">
+                        <a href="{% url 'station_detail' station.id %}" class="card-link">Перейти к станции</a>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

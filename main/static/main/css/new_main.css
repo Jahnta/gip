@@ -1,0 +1,72 @@
+. {
+    box-sizing: border-box;
+    background-color: grey;
+}
+
+body {
+    min-width: calc(100% - 30px);
+}
+
+.main {
+    margin: 0px 0px 0px 300px;
+}
+
+.sidenav {
+    height: 100%; /* Full-height: remove this if you want "auto" height */
+    width: 300px; /* Set the width of the sidebar */
+    position: fixed; /* Fixed Sidebar (stay in place on scroll) */
+    z-index: 1; /* Stay on top */
+    top: 0; /* Stay at the top */
+    left: 0;
+    overflow-x: hidden; /* Disable horizontal scroll */
+    border-right: 1px solid lightgrey;
+}
+
+.sidenav img {
+    display: block;
+    height: 50px;
+    margin: 15px 30px 15px 30px;
+}
+
+.sidenav a {
+    margin: 0px 30px 5px 30px;
+    border-radius: 5px;
+    padding: 7px 10px;
+    display: block;
+    color: black;
+    text-decoration: none;
+    font-size: 17px;
+    font-weight: 500;
+}
+
+.sidenav a:hover {
+    color: #007AC2;
+    background-color: #E7F6FF;
+}
+
+.sidenav a.active {
+    color: rgb(0, 121, 194);
+    background-color: #E7F6FF;
+}
+
+.sidenav .auth {
+    width: 300px;
+    position: fixed; /* Fixed Sidebar (stay in place on scroll) */
+    z-index: 1; /* Stay on top */
+    bottom: 50px;
+    left: 0;
+    overflow-x: hidden; /* Disable horizontal scroll */
+}
+
+.user-info {
+    margin: 0px 30px 5px 30px;
+    border: 1px solid lightgrey;
+    border-radius: 5px;
+    padding: 15px 15px;
+    display: block;
+    color: black;
+    text-decoration: none;
+    font-size: 17px;
+    font-weight: 500;
+}
+

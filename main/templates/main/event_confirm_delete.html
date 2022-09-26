@@ -1,0 +1,33 @@
+{% extends 'main/new_layout.html' %}
+{% load static %}
+
+{% block head%}
+    <link rel="stylesheet" href="{% static 'main/css/tab.css' %}">
+    <link rel="stylesheet" href="{% static 'main/css/tab__tabcontent__block.css' %}">
+{% endblock %}
+
+{% block title %}
+    Удалить инспекцию
+{% endblock %}
+
+{% block content %}
+
+<div class="topline">
+    <div class="" style="padding: 2px 7px;">
+        <a style="font-weight: 500; ">Удалить инспекцию</a>
+    </div>
+</div>
+
+
+<div style="margin: 15px;">
+
+  <p>Вы уверены, что хотите удалить инспекцию: <span style="font-weight: bold">{{ event }}?</span></p>
+
+  <form action="" method="POST">
+  {% csrf_token %}
+    <button class="btn btn-danger" type="submit">Да, удалить</button>
+  </form>
+</div>
+
+
+{% endblock %}

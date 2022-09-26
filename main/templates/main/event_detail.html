@@ -1,0 +1,128 @@
+{% extends 'main/new_layout.html' %}
+{% load static %}
+
+{% block head%}
+    <link rel="stylesheet" href="{% static 'main/css/tab.css' %}">
+    <link rel="stylesheet" href="{% static 'main/css/tab__tabcontent__block.css' %}">
+{% endblock %}
+
+{% block title %}
+    {{ event }}
+{% endblock %}
+
+{% block content %}
+
+
+<div class="topline">
+    <div class="topline-item" style="margin-left: 0">
+        <a href="{% url 'stations' %}">Все станции</a>
+    </div> /
+    <div class="topline-item">
+        <a href="{% url 'station_detail' event.unit.station.id %}">{{ event.unit.station.short_name }}</a>
+    </div> /
+    <div class="topline-item">
+        <a href="{% url 'unit_detail' event.unit.id %}">
+            {{ event.unit.short_name }}
+        </a>
+    </div> /
+    <div class="topline-item active">
+        <a href="{% url 'event_detail' event.id %}">
+            {{ event.short_name }} {{ event.start.year }}
+        </a>
+    </div>
+    <div style="display: inline-block; border: 0px solid black">
+        <div class="topline-item" style="display: inline-block; margin: 0 15px;">
+            <a href="{% url 'event_edit' event_id=event.pk %}"><i class="fa-solid fa-pen-to-square"></i></a>
+        </div>
+        <div class="topline-item" style="display: inline-block; margin-right: 15px;">
+            <a href="{% url 'event_delete' pk=event.pk %}"><i class="fa-solid fa-trash"></i></a>
+        </div>
+    </div>
+</div>
+
+<div style="padding: 15px 20px;">
+    <a style="font-size: 30px; font-weight: 500;">
+        {{ event.full_name }}
+    </a>
+
+    <br>
+    <a style="color: grey">{{ event.unit.short_name }} {{ event.unit.station.short_name }}</a>
+</div>
+
+
+<div class="tab">
+    <button class="tablinks" onclick="openTab(event, 'general')" id="defaultOpen">Обзор</button>
+    <!--<button class="tablinks" onclick="openTab(event, 'tab8')">Ход выполнения</button>-->
+    <button class="tablinks" onclick="openTab(event, 'spareparts')">Запасные части</button>
+    <button class="tablinks" onclick="openTab(event, 'services')">Объем работ</button>
+    <button class="tablinks" onclick="openTab(event, 'tab3')">Субподрядчики</button>
+    <button class="tablinks" onclick="openTab(event, 'tab5')">Персонал</button>
+    <button class="tablinks" onclick="openTab(event, 'tab6')">Ремонтная документация</button>
+    <button class="tablinks" onclick="openTab(event, 'tab7')">Отчетная документация</button>
+
+</div>
+
+{% include 'main/event_detail_general.html' %}
+
+{% include 'main/event_detail_services.html' %}
+
+
+<div id="tab3" class="tabcontent" style="padding: 0 0;">
+    <div class="container">
+        <div class="dashboard">
+            <div class="col">
+                <div class="block"><h4>Субподрядчики</h4></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% include 'main/event_detail_spareparts.html' %}
+
+<div id="tab5" class="tabcontent" style="padding: 0 0;">
+    <div class="container">
+        <div class="dashboard">
+            <div class="col">
+                <div class="block" style="">
+                    Здесь может быть приведена информация о задействованном персонале:<br>
+                    - списки персонала по субподрядчикам<br>
+                    - информация о квалификации<br>
+                    - допуски<br>
+                    - прочее<br>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="tab6" class="tabcontent" style="padding: 0 0;">
+    <div class="container">
+        <div class="dashboard">
+            <div class="col">
+                <div class="block">
+                    <h4>Здесь может быть приведена вся ремонтная документация по инспекции</h4>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="tab7" class="tabcontent" style="padding: 0 0;">
+    <div class="container">
+        <div class="dashboard">
+            <div class="col">
+                <div class="block">
+                    <h4>Здесь может быть приведена вся отчетная документация по инспекции</h4>
+                    {% if event.report_file %}
+                    <a href="{{ event.report_file.url }}">{{ event.report_file }}</a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script></script>
+<script src="{% static 'main/js/openTab.js' %}"></script>
+
+{% endblock %}

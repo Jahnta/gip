@@ -1,13 +1,25 @@
-{% extends 'main/layout.html' %}
+{% extends 'main/new_layout.html' %}
 
 {% block title %}
     Главная страница
 {% endblock %}
 
-{% block content %}
-    <div class="features" style="padding: 15px;">
-        <h2>Это основная страница, здесь будет общая информация.</h2>
-        <h6>Для перехода на другие страницы воспользуйтесь навигационным меню (доступно из любой точки сайта)</h6>
+{% block nav-home %}
+<a href="{% url 'home' %}" class="active"><i class="fa-solid fa-house"></i>&nbsp&nbspДомой</a>
+{% endblock %}
 
+
+{% block content %}
+    <div class="block" style="padding: 15px">
+        <h2>Это основная страница, на которой пока ничего нет.</h2>
+        <h6>Для перехода на другие страницы воспользуйтесь навигационным меню (доступно из любой точки сайта)</h6>
+        <br>
+        Сессия: {{ request.session }}<br>
+        {% for item in request.session.items %}
+            {{ item }}<br>
+        {% endfor %}
+        <br>
+        Пользователь: {{ user }}<br>
+        Авторизирован? {{ user.is_authenticated }}
     </div>
 {% endblock %}

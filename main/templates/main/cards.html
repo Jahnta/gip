@@ -2,6 +2,7 @@
 {% load static %}
 
 {% block head%}
+    <link rel="stylesheet" href="{% static 'main/css/card.css' %}">
 {% endblock %}
 
 {% block title %}
@@ -13,6 +14,10 @@
     {% for event in event_list %}
         {% include 'main/card.html'%}
     {% endfor %}
+
+<!--<div class="card" style="height: 280px; background-color: inherit; border: 5px dashed black">
+    <a href="{% url 'create_card' %}"><button style="width:100%; height: 100%; border-radius: 15px;border: 0; font-size: 100px">+</button></a>
+</div><--!>
 
     <script src="{% static 'main/js/openCard.js'%}"></script>
 

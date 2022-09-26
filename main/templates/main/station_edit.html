@@ -1,0 +1,35 @@
+{% extends 'main/new_layout.html' %}
+{% load static %}
+
+{% block head%}
+    <link rel="stylesheet" href="{% static 'main/css/tab.css' %}">
+    <link rel="stylesheet" href="{% static 'main/css/tab__tabcontent__block.css' %}">
+{% endblock %}
+
+{% block title %}
+    Редактировать станцию
+{% endblock %}
+
+{% block content %}
+
+<div class="topline">
+    <div class="" style="padding: 2px 7px;">
+        <a style="font-weight: 500; ">Добавить станцию</a>
+    </div>
+</div>
+
+<div style="margin:15px">
+    <h1>Сроки инспекции</h1>
+    <form method="POST">
+        {% csrf_token %}
+        <span>{{error}}</span><br>
+        {{ form.errors }}
+        <table>
+            {{ form.as_table }}
+        </table>
+         <br>
+        <button class="btn btn-success" type="submit">Сохранить</button>
+    </form>
+</div>
+
+{% endblock %}
